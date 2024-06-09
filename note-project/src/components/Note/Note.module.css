@@ -1,7 +1,7 @@
 .container {
-  background-color: var(--pink-color);
+  background-color: var(--pink-color, #ffdfde);
   display: flex;
-  color: var(--blue-color);
+  color: var(--blue-color, #6a7ba2);
   flex-direction: column;
   padding: 1rem;
   border-radius: 1rem;

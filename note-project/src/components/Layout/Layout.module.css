@@ -3,7 +3,7 @@
   height: 35rem;
   border-radius: 3rem;
   padding: 3rem;
-  color: var(--pink-color);
-  background-color: var(--blue-color);
+  color: var(--pink-color, #ffdfde);
+  background-color: var(--blue-color, #6a7ba2);
 }
 
