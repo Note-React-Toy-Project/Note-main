@@ -3,6 +3,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Create.module.css";
 import Button from "../../components/commons/Button/Button";
 import useCreate from "../../hooks/useCreate";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const {
@@ -12,13 +13,16 @@ const Create = () => {
     handleContentChange,
     handleDoneClick,
   } = useCreate();
-  const handleRemoveNote = () => {
-    console.log("remove note");
+  const navigate = useNavigate();
+
+  const doneBtnClick = () => {
+    handleDoneClick();
+    navigate("/");
   };
   return (
     <section className={styles.container}>
       <nav className={styles.nav}>
-        <button className={styles.backBtn}>
+        <button className={styles.backBtn} onClick={() => navigate(-1)}>
           <FontAwesomeIcon icon={faChevronLeft} /> Back
         </button>
       </nav>
@@ -38,16 +42,7 @@ const Create = () => {
         />
       </main>
       <footer className={styles.footer}>
-        <Button
-          text="Remove Note"
-          onClick={handleRemoveNote}
-          backgroundColor="#d13030"
-        />
-        <Button
-          text="Done"
-          onClick={handleDoneClick}
-          backgroundColor="#4870d4"
-        />
+        <Button text="Done" onClick={doneBtnClick} backgroundColor="#4870d4" />
       </footer>
     </section>
   );
