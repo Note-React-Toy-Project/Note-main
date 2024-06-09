@@ -1,5 +1,16 @@
 .noteContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  overflow-y: auto;
+  max-height: 27rem;
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
 }
