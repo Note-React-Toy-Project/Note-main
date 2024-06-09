@@ -1,10 +1,13 @@
 import { NoteType } from "../interface/NoteType";
+import { v4 as uuidv4 } from "uuid";
 
 export const saveNote = (note: NoteType) => {
+  console.log(note);
   try {
     const storedNotes = localStorage.getItem("notes");
-    const notes = storedNotes ? JSON.parse("notes") : [];
-    notes.push(note);
+    const notes = storedNotes ? JSON.parse(storedNotes) : [];
+    const noteWithId = { ...note, id: uuidv4() };
+    notes.push(noteWithId);
     localStorage.setItem("notes", JSON.stringify(notes));
   } catch (error) {
     console.log(error);
