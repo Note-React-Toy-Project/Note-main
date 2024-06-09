@@ -100,14 +100,29 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
   height: 100dvh;
-  background-color: #ffdfde;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffdfde;
 }
+
+body[data-theme="light-mode"] {
+  background-color: var(--pink-color);
+  --pink-color: #ffdfde;
+  --blue-color: #6a7ba2;
+}
+
+body[data-theme="dark-mode"] {
+  background-color: var(--pink-color);
+  --pink-color: #000000;
+  --blue-color: #4b4b4b;
+
+}
+
 ol,
 ul {
   list-style: none;
