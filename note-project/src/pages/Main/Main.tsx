@@ -1,37 +1,43 @@
+import { useEffect, useState } from "react";
 import Note from "../../components/Note/Note";
-import { NoteType } from "../../interface/NoteType";
 import styles from "./Main.module.css";
+import { getNotes } from "../../utils/storageNote";
+import Button from "../../components/commons/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
-  const notes: NoteType[] = [
-    {
-      title: "title11",
-      content: "content111",
-    },
-    {
-      title: "title2",
-      content: "content222",
-    },
-    {
-      title: "title3",
-      content: "content333",
-    },
-    {
-      title: "title4",
-      content: "content444",
-    },
-  ];
+  const [notes, setNotes] = useState([]);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const notes = getNotes();
+    setNotes(notes);
+  }, []);
+  const handleCreateClick = () => {
+    navigate("/create");
+  };
+  const handleNoteClick = (id) => {
+    navigate(`/update/${id}`);
+  };
   return (
-    <>
-      main page 여기다가 노트 뿌릴거임
-      <div className={styles.noteContainer}>
-        {notes.map((eachNote) => {
-        return <Note title={eachNote.title} content={eachNote.content} />;
-      })}
-      </div>
-      
-    </>
+    <div className={styles.noteContainer}>
+      <ul className={styles.ul}>
+        {notes.map((note) => {
+          return (
+            <li key={note.id} onClick={() => handleNoteClick(note.id)}>
+              <Note title={note.title} content={note.content} />
+            </li>
+          );
+        })}
+      </ul>
+      <footer className={styles.footer}>
+        <Button
+          text="Create Note"
+          onClick={handleCreateClick}
+          backgroundColor="#4870d4"
+        />
+      </footer>
+    </div>
   );
 };
 
