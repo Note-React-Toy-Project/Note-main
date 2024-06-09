@@ -16,7 +16,7 @@ const Main = () => {
   const handleCreateClick = () => {
     navigate("/create");
   };
-  const handleNoteClick = (id) => {
+  const handleNoteClick = (id: string) => {
     navigate(`/update/${id}`);
   };
   return (
