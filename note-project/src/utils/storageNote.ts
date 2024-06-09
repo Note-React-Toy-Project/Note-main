@@ -6,7 +6,8 @@ export const saveNote = (note: NoteType) => {
   try {
     const storedNotes = localStorage.getItem("notes");
     const notes = storedNotes ? JSON.parse(storedNotes) : [];
-    notes.push(note);
+    const noteWithId = { ...note, id: uuidv4() };
+    notes.push(noteWithId);
     localStorage.setItem("notes", JSON.stringify(notes));
   } catch (error) {
     console.log(error);
