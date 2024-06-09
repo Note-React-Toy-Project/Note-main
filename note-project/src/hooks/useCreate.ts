@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { saveNote } from "../utils/storageNote";
+import { useNavigate } from "react-router-dom";
 
 const useCreate = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const navigate = useNavigate();
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -21,6 +23,7 @@ const useCreate = () => {
       saveNote(newNote);
       setTitle("");
       setContent("");
+      navigate("/");
     }
   };
   return {
