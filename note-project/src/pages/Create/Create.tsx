@@ -34,7 +34,8 @@ const Create = () => {
           placeholder="제목을 입력하세요."
           onChange={handleTitleChange}
         />
-        <textarea
+        <input
+          type="textarea"
           value={content}
           className={styles.content}
           placeholder="내용을 입력하세요."
