@@ -19,19 +19,10 @@ const Main = () => {
     console.log(sort);
     if (sort == 1) {
       notes.sort(function (a: NoteType, b: NoteType) {
-        console.log("생성순");
-
         if (a.createdTime && b.createdTime) {
-          console.log("a::", new Date(a.createdTime).valueOf());
-          console.log("b::", new Date(b.createdTime).valueOf());
-          console.log(
-            "reu::",
-            new Date(b.createdTime).valueOf() -
-              new Date(a.createdTime).valueOf()
-          );
           return (
-            new Date(b.createdTime).valueOf() -
-            new Date(a.createdTime).valueOf()
+            new Date(a.createdTime).valueOf() -
+            new Date(b.createdTime).valueOf()
           );
         } else {
           return -1;
@@ -40,7 +31,6 @@ const Main = () => {
     }
     if (sort == 2) {
       notes.sort(function (a: NoteType, b: NoteType) {
-        console.log("수정순");
         if (a.updateTime && b.updateTime) {
           return (
             new Date(b.updateTime).valueOf() - new Date(a.updateTime).valueOf()
@@ -57,10 +47,10 @@ const Main = () => {
     setNotes(notes);
   }, []);
   const handleCreateClick = () => {
-    navigate("/create");
+    navigate("/write");
   };
-  const handleNoteClick = (id: string) => {
-    navigate(`/update/${id}`);
+  const handleNoteClick = (id: string | undefined) => {
+    navigate(`/write/${id}`);
   };
   return (
     <div className={styles.noteContainer}>
@@ -68,8 +58,8 @@ const Main = () => {
       <ul className={styles.ul}>
         {notes.map((note) => {
           return (
-            <li key={note.id} onClick={() => handleNoteClick(note.id!)}>
-              <Note title={note.title} content={note.content} />
+            <li key={note.id} onClick={() => handleNoteClick(note.id)}>
+              <Note title={note.title} content={note.content} id={""} />
             </li>
           );
         })}

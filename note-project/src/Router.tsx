@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Update from "./pages/Update/Update";
-import Create from "./pages/Create/Create";
 import Main from "./pages/Main/Main";
 import Layout from "./components/Layout/Layout";
+import Write from "./pages/Write/Write";
 
 const Router = () => {
   return (
@@ -10,8 +9,8 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main />} />
-          <Route path="create" element={<Create />} />
-          <Route path="update/:id" element={<Update />} />
+          <Route path="write" element={<Write />} />
+          <Route path="write/:id" element={<Write />} />
         </Route>
       </Routes>
     </BrowserRouter>
