@@ -6,8 +6,8 @@
   background: none;
   border: none;
   outline: none;
-  color: #6a7ba2;
+  color: var(--blue-color, #6a7ba2);
   padding: 0.5rem;
-  background-color: #ffdfde;
+  background-color: var(--pink-color, #ffdfde);
   border-radius: 8px;
 }
