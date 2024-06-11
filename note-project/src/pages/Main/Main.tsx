@@ -4,9 +4,10 @@ import styles from "./Main.module.css";
 import { getNotes } from "../../utils/storageNote";
 import Button from "../../components/commons/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { NoteType } from "../../interface/NoteType";
 
 const Main = () => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState<NoteType[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,7 +17,7 @@ const Main = () => {
   const handleCreateClick = () => {
     navigate("/create");
   };
-  const handleNoteClick = (id) => {
+  const handleNoteClick = (id: string) => {
     navigate(`/update/${id}`);
   };
   return (
@@ -25,7 +26,7 @@ const Main = () => {
         {notes.map((note) => {
           return (
             <li key={note.id} onClick={() => handleNoteClick(note.id)}>
-              <Note title={note.title} content={note.content} />
+              <Note title={note.title} content={note.content} id={""} />
             </li>
           );
         })}

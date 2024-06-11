@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { saveNote } from "../utils/storageNote";
 
-
 const useCreate = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -23,7 +21,6 @@ const useCreate = () => {
       saveNote(newNote);
       setTitle("");
       setContent("");
-      
     }
   };
   return {

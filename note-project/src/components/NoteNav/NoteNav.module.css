@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  padding: 1rem 0;
+}
+.backBtn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #6a7ba2;
+  padding: 0.5rem;
+  background-color: #ffdfde;
+  border-radius: 8px;
+}

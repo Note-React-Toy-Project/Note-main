@@ -1,9 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Create.module.css";
 import Button from "../../components/commons/Button/Button";
 import useCreate from "../../hooks/useCreate";
 import { useNavigate } from "react-router-dom";
+import NoteNav from "../../components/NoteNav/NoteNav";
 
 const Create = () => {
   const {
@@ -21,11 +20,7 @@ const Create = () => {
   };
   return (
     <section className={styles.container}>
-      <nav className={styles.nav}>
-        <button className={styles.backBtn} onClick={() => navigate(-1)}>
-          <FontAwesomeIcon icon={faChevronLeft} /> Back
-        </button>
-      </nav>
+      <NoteNav />
       <main className={styles.main}>
         <input
           type="text"
