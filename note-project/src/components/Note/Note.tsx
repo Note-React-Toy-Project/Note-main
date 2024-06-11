@@ -1,7 +1,7 @@
 import { NoteType } from "../../interface/NoteType";
 import styles from "./Note.module.css";
 
-const Note: React.FC<NoteType> = (note) => {
+const Note = (note: NoteType) => {
   return (
     <div className={styles.container}>
       <p className={styles.titleStyle}>{note.title}</p>
