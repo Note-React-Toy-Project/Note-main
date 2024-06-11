@@ -1,25 +1,17 @@
 import { NoteType } from "../interface/NoteType";
-import { v4 as uuidv4 } from "uuid";
 
-export const saveNote = (note: NoteType) => {
-  console.log(note);
-  try {
-    const storedNotes = localStorage.getItem("notes");
-    const notes = storedNotes ? JSON.parse(storedNotes) : [];
-    const noteWithId = { ...note, id: uuidv4() };
-    notes.push(noteWithId);
-    localStorage.setItem("notes", JSON.stringify(notes));
-  } catch (error) {
-    console.log(error);
-  }
+export const getNotes = (): NoteType[] => {
+  const notes = localStorage.getItem("notes");
+  return notes ? JSON.parse(notes) : [];
 };
 
-export const getNotes = () => {
-  try {
-    const storedNotes = localStorage.getItem("notes");
-    return storedNotes ? JSON.parse(storedNotes) : [];
-  } catch (error) {
-    console.error(error);
-    return [];
+export const saveNote = (note: NoteType) => {
+  const notes = getNotes();
+  const existingNoteIndex = notes.findIndex((n) => n.id === note.id);
+  if (existingNoteIndex >= 0) {
+    notes[existingNoteIndex] = note;
+  } else {
+    notes.push(note);
   }
+  localStorage.setItem("notes", JSON.stringify(notes));
 };

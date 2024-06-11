@@ -15,10 +15,10 @@ const Main = () => {
     setNotes(notes);
   }, []);
   const handleCreateClick = () => {
-    navigate("/create");
+    navigate("/write");
   };
-  const handleNoteClick = (id: string) => {
-    navigate(`/update/${id}`);
+  const handleNoteClick = (id: string | undefined) => {
+    navigate(`/write/${id}`);
   };
   return (
     <div className={styles.noteContainer}>
