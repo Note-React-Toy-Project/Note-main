@@ -1,5 +1,13 @@
 .container {
   display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+.titleContainer {
+  display: flex;
   flex-direction: column;
   gap: 0.3rem;
 
@@ -12,4 +20,8 @@
 .span {
   font-size: 1.2rem;
   font-weight: 500;
+}
+.toggleBtn {
+  width: 3rem;
+  cursor: pointer;
 }
