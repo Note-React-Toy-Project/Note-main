@@ -50,11 +50,17 @@ const Write = () => {
     }
     navigate("/");
   };
+  const handleDelete = (id: string | undefined) => {
+    const notes = getNotes();
+    const updatedNotes = notes.filter((n) => n.id !== id);
+    localStorage.setItem("notes", JSON.stringify(updatedNotes));
+    navigate("/");
+  };
 
   return (
     <section className={styles.container}>
       <NoteNav />
-      <NoteForm note={note} onSave={handleSave} />
+      <NoteForm note={note} onSave={handleSave} onDelete={handleDelete} />
     </section>
   );
 };
