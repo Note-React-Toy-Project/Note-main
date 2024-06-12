@@ -6,9 +6,11 @@ import { NoteType } from "../../interface/NoteType";
 interface NoteFormType {
   note: NoteType;
   onSave: (note: NoteType) => void;
+  onDelete: (noteId: string | undefined) => void;
 }
 
-const NoteForm = ({ note, onSave }: NoteFormType) => {
+const NoteForm = ({ note, onSave, onDelete }: NoteFormType) => {
+  console.log(note);
   const [title, setTitle] = useState(note.title || "");
   const [content, setContent] = useState(note.content || "");
 
@@ -19,6 +21,9 @@ const NoteForm = ({ note, onSave }: NoteFormType) => {
 
   const handleSubmit = () => {
     onSave({ ...note, title, content });
+  };
+  const handleDelete = () => {
+    onDelete(note.id);
   };
   return (
     <>
@@ -38,6 +43,11 @@ const NoteForm = ({ note, onSave }: NoteFormType) => {
         />
       </main>
       <footer className={styles.footer}>
+        <Button
+          text="Delete Note"
+          onClick={handleDelete}
+          backgroundColor="#d12e2e"
+        />
         <Button text="Done" onClick={handleSubmit} backgroundColor="#4870d4" />
       </footer>
     </>
