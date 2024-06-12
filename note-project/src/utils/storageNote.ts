@@ -20,7 +20,7 @@ export const getFavorites = () => {
   const favorites = localStorage.getItem("favorites");
   return favorites ? JSON.parse(favorites) : [];
 };
-export const saveFavorites = (noteId: NoteType) => {
+export const saveFavorites = (noteId: string) => {
   const notes = getNotes();
   const clickedNoteIndex = notes.findIndex((n) => n.id === noteId);
   if (clickedNoteIndex >= 0) {

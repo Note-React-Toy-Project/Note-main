@@ -18,7 +18,7 @@ const NoteForm = ({ note, onSave }: NoteFormType) => {
   }, [note]);
 
   const handleSubmit = () => {
-    onSave({ title, content });
+    onSave({ ...note, title, content });
   };
   return (
     <>

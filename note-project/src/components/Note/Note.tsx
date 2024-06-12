@@ -7,26 +7,26 @@ import { useNavigate } from "react-router-dom";
 import { saveFavorites } from "../../utils/storageNote";
 import { useState } from "react";
 
-const Note = (note: NoteType) => {
-  const [isFavorite, setIsFavorite] = useState(note.note.isFavorite);
+const Note = ({ id, title, content, isFavorite }: NoteType) => {
+  const [isFavoriteNow, setIsFavoriteNow] = useState(isFavorite);
   const navigate = useNavigate();
 
   const handleNoteClick = () => {
-    navigate(`/write/${note.note.id}`);
+    navigate(`/write/${id}`);
   };
   const handleStarClick = () => {
-    saveFavorites(note.note.id);
-    setIsFavorite(!isFavorite);
+    saveFavorites(id);
+    setIsFavoriteNow(!isFavoriteNow);
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.textWrapper} onClick={handleNoteClick}>
-        <p className={styles.titleStyle}>{note.note.title}</p>
-        <p className={styles.contentStyle}>{note.note.content}</p>
+        <p className={styles.titleStyle}>{title}</p>
+        <p className={styles.contentStyle}>{content}</p>
       </div>
       <button onClick={handleStarClick}>
-        {isFavorite ? (
+        {isFavoriteNow ? (
           <FontAwesomeIcon icon={solidStar} className={styles.star} />
         ) : (
           <FontAwesomeIcon icon={regularStar} className={styles.star} />

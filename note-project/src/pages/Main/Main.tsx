@@ -47,7 +47,6 @@ const Main = () => {
     const notes = getNotes();
     setNotes(notes);
   }, []);
-
   const handleCreateClick = () => {
     navigate("/write");
   };
@@ -55,14 +54,11 @@ const Main = () => {
     <div className={styles.noteContainer}>
       <Dropdown />
       <ul className={styles.ul}>
-        {notes.map((note) => {
-          return (
-
-            <li key={note.id}>
-              <Note note={note} />
-            </li>
-          );
-        })}
+        {notes.map((note) => (
+          <li key={note.id}>
+            <Note {...note} />
+          </li>
+        ))}
       </ul>
       <footer className={styles.footer}>
         <Button

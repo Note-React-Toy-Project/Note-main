@@ -11,10 +11,11 @@ const Write = () => {
   const params = useParams();
   const noteId = params.id;
   const navigate = useNavigate();
-  const [note, setNote] = useState({
+  const [note, setNote] = useState<NoteType>({
     id: "",
     title: "",
     content: "",
+    isFavorite: false,
     createdTime: new Date(),
     updateTime: new Date(),
   });
@@ -35,10 +36,15 @@ const Write = () => {
       const updatedNotes = notes.map((n) =>
         n.id === noteId ? { ...n, ...note, updateTime: new Date() } : n
       );
-      
+
       localStorage.setItem("notes", JSON.stringify(updatedNotes));
     } else {
-      const newNote = { ...note, id: uuidv4(), isFavorite: false, createdTime: new Date() };
+      const newNote = {
+        ...note,
+        id: uuidv4(),
+        isFavorite: false,
+        createdTime: new Date(),
+      };
       notes.push(newNote);
       localStorage.setItem("notes", JSON.stringify(notes));
     }

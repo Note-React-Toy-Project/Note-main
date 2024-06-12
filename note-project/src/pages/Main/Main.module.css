@@ -8,9 +8,11 @@
   flex-direction: column;
   gap: 0.8rem;
   overflow-y: auto;
-  max-height: 27rem;
+  max-height: 24rem;
+  min-height: 24rem;
 }
 .footer {
   display: flex;
   justify-content: flex-end;
+  margin-top: auto;
 }
