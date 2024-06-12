@@ -17,16 +17,13 @@ const Main = () => {
   const handleCreateClick = () => {
     navigate("/write");
   };
-  const handleNoteClick = (id: string | undefined) => {
-    navigate(`/write/${id}`);
-  };
   return (
     <div className={styles.noteContainer}>
       <ul className={styles.ul}>
         {notes.map((note) => {
           return (
-            <li key={note.id} onClick={() => handleNoteClick(note.id)}>
-              <Note title={note.title} content={note.content} id={""} />
+            <li key={note.id}>
+              <Note note={note} />
             </li>
           );
         })}

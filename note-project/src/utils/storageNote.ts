@@ -15,3 +15,16 @@ export const saveNote = (note: NoteType) => {
   }
   localStorage.setItem("notes", JSON.stringify(notes));
 };
+
+export const getFavorites = () => {
+  const favorites = localStorage.getItem("favorites");
+  return favorites ? JSON.parse(favorites) : [];
+};
+export const saveFavorites = (noteId: NoteType) => {
+  const notes = getNotes();
+  const clickedNoteIndex = notes.findIndex((n) => n.id === noteId);
+  if (clickedNoteIndex >= 0) {
+    notes[clickedNoteIndex].isFavorite = !notes[clickedNoteIndex].isFavorite;
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }
+};
