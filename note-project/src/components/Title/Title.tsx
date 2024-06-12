@@ -22,7 +22,7 @@ const TItle = () => {
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>HB's Notes</h1>
-        <span className={styles.span}>나만의 노트를 생성해보세요!</span>
+        <span className={styles.span}>인생은 기록입니다롱 푸하하</span>
       </div>
 
       <img

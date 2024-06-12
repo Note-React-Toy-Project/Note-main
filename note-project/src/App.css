@@ -118,8 +118,8 @@ body[data-theme="light-mode"] {
 
 body[data-theme="dark-mode"] {
   background-color: var(--pink-color);
-  --pink-color: #000000;
-  --blue-color: #4b4b4b;
+  --pink-color: #cccccc;
+  --blue-color: #000000;
 }
 
 ol,
