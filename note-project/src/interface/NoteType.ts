@@ -1,6 +1,9 @@
 export interface NoteType {
-  id?: string;
+  id: string;
   title: string;
   content: string;
   isFavorite: boolean;
+  createdTime: Date;
+  updateTime: Date;
+
 }

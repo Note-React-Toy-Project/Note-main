@@ -1,0 +1,14 @@
+.topButton {
+  color: var(--blue-color, #6a7ba2);
+  background-color: black;
+}
+
+.dropdownContainer {
+  position: relative;
+  margin-left: auto;
+  width: 6rem;
+  height: 2rem;
+  border-radius: 10px;
+  color: var(--blue-color, #6a7ba2);
+  background-color: var(--pink-color, #ffdfde);
+}

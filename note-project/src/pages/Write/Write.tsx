@@ -11,7 +11,13 @@ const Write = () => {
   const params = useParams();
   const noteId = params.id;
   const navigate = useNavigate();
-  const [note, setNote] = useState({ id: "", title: "", content: "" });
+  const [note, setNote] = useState({
+    id: "",
+    title: "",
+    content: "",
+    createdTime: new Date(),
+    updateTime: new Date(),
+  });
 
   useEffect(() => {
     if (noteId) {
@@ -27,11 +33,12 @@ const Write = () => {
     const notes = getNotes();
     if (noteId) {
       const updatedNotes = notes.map((n) =>
-        n.id === noteId ? { ...n, ...note } : n
+        n.id === noteId ? { ...n, ...note, updateTime: new Date() } : n
       );
+      
       localStorage.setItem("notes", JSON.stringify(updatedNotes));
     } else {
-      const newNote = { ...note, id: uuidv4(), isFavorite: false };
+      const newNote = { ...note, id: uuidv4(), isFavorite: false, createdTime: new Date() };
       notes.push(newNote);
       localStorage.setItem("notes", JSON.stringify(notes));
     }
