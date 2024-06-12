@@ -1,11 +1,17 @@
 .container {
   background-color: var(--pink-color, #ffdfde);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: var(--blue-color, #6a7ba2);
-  flex-direction: column;
   padding: 1rem;
   border-radius: 1rem;
-  gap: 7px;
+}
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .titleStyle {
@@ -15,4 +21,8 @@
 
 .contentStyle {
   font-size: 1rem;
+}
+.star {
+  font-size: 1.7rem;
+  color: #ffcc60;
 }

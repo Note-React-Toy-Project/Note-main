@@ -38,7 +38,7 @@ const Write = () => {
       
       localStorage.setItem("notes", JSON.stringify(updatedNotes));
     } else {
-      const newNote = { ...note, id: uuidv4(), createdTime: new Date() };
+      const newNote = { ...note, id: uuidv4(), isFavorite: false, createdTime: new Date() };
       notes.push(newNote);
       localStorage.setItem("notes", JSON.stringify(notes));
     }
