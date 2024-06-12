@@ -1,7 +1,7 @@
 export interface NoteType {
-  id?: string;
+  id: string;
   title: string;
   content: string;
-  createdTime?: string;
-  updateTime?: string;
+  createdTime: Date;
+  updateTime: Date;
 }

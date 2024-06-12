@@ -16,21 +16,20 @@ const Main = () => {
   const [sort] = useAtom(sortAtom);
 
   useEffect(() => {
-    console.log(sort);
+    const sortedNotes = [...notes];
     if (sort == 1) {
-      notes.sort(function (a: NoteType, b: NoteType) {
+      sortedNotes.sort(function (a: NoteType, b: NoteType) {
         if (a.createdTime && b.createdTime) {
           return (
-            new Date(a.createdTime).valueOf() -
-            new Date(b.createdTime).valueOf()
+            new Date(b.createdTime).valueOf() -
+            new Date(a.createdTime).valueOf()
           );
         } else {
           return -1;
         }
       });
-    }
-    if (sort == 2) {
-      notes.sort(function (a: NoteType, b: NoteType) {
+    } else if (sort == 2) {
+      sortedNotes.sort(function (a: NoteType, b: NoteType) {
         if (a.updateTime && b.updateTime) {
           return (
             new Date(b.updateTime).valueOf() - new Date(a.updateTime).valueOf()
@@ -40,12 +39,15 @@ const Main = () => {
         }
       });
     }
-  }, [sort, notes]);
+    setNotes(sortedNotes);
+    //근데 얘가 수정완료 했을 때나 생성했을때는 업데이트가 안돼 .. 클릭해야해
+  }, [sort, notes.length]);
 
   useEffect(() => {
     const notes = getNotes();
     setNotes(notes);
   }, []);
+
   const handleCreateClick = () => {
     navigate("/write");
   };
@@ -59,7 +61,13 @@ const Main = () => {
         {notes.map((note) => {
           return (
             <li key={note.id} onClick={() => handleNoteClick(note.id)}>
-              <Note title={note.title} content={note.content} id={""} />
+              <Note
+                title={note.title}
+                content={note.content}
+                id={""}
+                createdTime={note.createdTime}
+                updateTime={note.updateTime}
+              />
             </li>
           );
         })}
